@@ -46,9 +46,9 @@
 <body>
     <div class="wrapper">
         <header class="header">
-            <div class="container-fluid  banner xs-display-none sm-display-none md-display-none"
+            <div class="container-fluid  banner"
                 style="background:orangered">
-                <div class="row">
+                <div class="row banner-parent">
                     <div class="col-lg-5 banner-left">
                         <img src="../img/icon/Mail_Icon.png" style="color:#fff;font-size:14px;" alt="E-mail-icon">
                         <a href="mailto:Info@kainoshospital.com"
@@ -472,24 +472,28 @@
                         </li>
                     </ul>
 
-                    <!-- <button x-data="{ open: false }" @click="open = !open" >
-                    <i class="fa fa-bars hamburger-menu"></i>
-                </button> -->
-                </div>
-            </nav>
+                    <!-- ################# Hamburger Menu ################# -->
+       <style>
+        @media(min-width:768px){
+            #navbarToggle{
+                display: block;
+            }
+        }
+       </style>
 
-        </header>
 
-        <!-- ################# Hamburger Menu ################# -->
-        <div class="hamburger">
-            <div class="hamburger-menu">
-                <ul class="items">
-                    <img src="../img/kainos-logo2.png" class="logo" alt="kainos logo">
-                    <span class="close-menu">
-                        <i class="fa-thin fa-square-xmark"></i>
-                    </span>
+            <nav class="navbar1">
+                <button class="navbar-toggle" id="navbarToggle">&#9776;</button>
+                <ul class="navbar-menu" id="navbarMenu">
 
-                    <div class="hami" x-show="open">
+                    <div class="navbar-menu-top">
+                        <img src="../img/kainos-logo2.png" class="nav-logo" alt="kainos logo">
+                        <i class="fa fa-times fa-4x" id="iconToggle"></i>
+                        <!-- <i class="fas fa-times fa-4x" id="iconToggle"></i> -->
+                    </div>
+
+                    <div class="parent-list-items">
+
                         <li class="menu-items">
                             <a href="" class="link">
                                 <img src="../img/iconimage/nav1.png" alt="home-icon">
@@ -500,9 +504,11 @@
                         <li class="menu-items">
                             <a class="link">
                                 <img src="../img/iconimage/About - Copy.png" alt="home-icon">
-                                <span class="nav-link dropdown-toggle caret" id="navbarDropdown"
-                                    data-bs-toggle="dropdown">About</span></a>
-                            <ul class="items-child">
+                                <span>About</span>
+                            </a>
+                            <i class="fa fa-sort-desc fa-2x dropdownToggle" aria-hidden="true"></i>
+
+                            <ul class="itemsChild">
                                 <li>
                                     <i class="fa fa-caret-right"></i>
                                     <a href="https://www.kainoshospital.com/our-story.html" class="child">Our story</a>
@@ -542,8 +548,11 @@
                         <li class="menu-items">
                             <a class="link">
                                 <img src="../img/iconimage/Service.png" alt="service-icon">
-                                <span>Services</span></a>
-                            <ul class="items-child">
+                                <span>Services</span>
+                            </a>
+                            <i class="fa fa-sort-desc fa-2x dropdownToggle" aria-hidden="true"></i>
+
+                            <ul class="itemsChild">
                                 <li>
                                     <i class="fa fa-caret-right"></i>
                                     <a href="https://www.kainoshospital.com/hospital-amenities.html"
@@ -580,12 +589,48 @@
                                 <span>Contact</span>
                             </a>
                         </li>
-
                     </div>
 
                 </ul>
-            </div>
-        </div>
+            </nav>
+
+
+                </div>
+            </nav>
+
+        </header>
+
+
+        <script>
+            const navbarToggle = document.getElementById('navbarToggle');
+            const navbarMenu = document.getElementById('navbarMenu');
+            const iconToggle = document.getElementById('iconToggle');
+            const dropdownToggle = document.querySelectorAll(".dropdownToggle");
+            // const itemschild = document.getElementsByClassName("items-child")
+            const itemsChild = document.querySelectorAll(".itemsChild");
+
+
+            navbarToggle.addEventListener('click', () => {
+                console.log("click")
+                navbarMenu.classList.toggle('show');
+                navbarMenu.classList.remove('disappear'); // Ensure the menu is not hidden when toggling
+            });
+
+            iconToggle.addEventListener('click', () => {
+                navbarMenu.classList.toggle('disappear');
+                navbarMenu.classList.remove('show'); // Ensure the menu is not visible when toggling
+            });
+
+            dropdownToggle.forEach((toggle, index) => {
+                toggle.addEventListener('click', () => {
+                    console.log("click");
+                    const itemChild = itemsChild[index];
+                    if (itemChild) {
+                        itemChild.classList.toggle('show');
+                    }
+                });
+            });
+        </script>
 
         <!-- #############slider########### -->
         <div class="main-slider-bg row d-flex justify-content-center align-item-center">
@@ -715,19 +760,19 @@
 
         <!-- ################## Owl Carousel #################### -->
 
-        <div class="container">
+        <!-- <div class="container">
             <h2 class="speciality-crousel">Our <span>Specialities</span></h2>
             <div class="speciality-crousel-image">
                 <img src="../img/header4.png" style="width:185px" alt="our speciality image">
             </div>
-        </div>
+        </div> -->
 
 
-        <div class="container">
+        <!-- <div class="container">
             <div class="owl-carousel owl-theme">
                 <div class="item" style="width: 121.25px; margin-right: 20px;">
                     <div class="single-box text-center">
-                        <img src="../img/s-round/anesthesia.webp" alt="img-1">
+                        <img src="../img/s-round/anesthesia.webp" alt="img-1"> 
                         <p>Anesthesia</p>
                     </div>
                 </div>
@@ -795,7 +840,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div>-->
 
 
         <!-- #################INFORMATIVE VIDEOS###################### -->
@@ -895,28 +940,7 @@
 
             </div>
 
-            <!-- <script>
-                $(document).ready(function () {
-                    $('selector').click(function () {
-                        $('selector.active').removeClass("active");
-                        $(this).addClass("active");
-                    });
-                });
-
-                $(".vid").click(function () {
-
-                    // Select all list items
-                    var listItems = $(".vid");
-
-                    // Remove 'active' tag for all list items
-                    for (let i = 0; i < listItems.length; i++) {
-                        listItems[i].classList.remove("active");
-                    }
-
-                    // Add 'active' tag for currently selected item
-                    this.classList.add("active");
-                });
-            </script> -->
+           
         </div>
 
 
@@ -1744,17 +1768,12 @@
         });
     </script>
 
-    <!-- Bootstrap cdn jqery and js link -->
-    <script src="https://code.jquery.com/jquery-2.2.0.min.js" type="text/javascript"></script>
 
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script> -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha512-DUC8yqWf7ez3JD1jszxCWSVB0DMP78eOyBpMa5aJki1bIRARykviOuImIczkxlj1KhVSyS16w2FSQetkD4UU2w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-
-    <!-- Latest compiled JavaScript 
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>-->
 
     <!-- slick.js cdn link -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>

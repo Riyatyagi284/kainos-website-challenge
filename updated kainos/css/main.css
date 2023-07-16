@@ -52,6 +52,10 @@ li {
     padding-bottom: 0.25rem;
 }
 
+.banner-parent{
+    width: 100%;
+}
+
 .header {
     position: sticky;
     top: 0;
@@ -101,7 +105,6 @@ img {
 
 .list-items {
     display: flex;
-    justify-content: space-between;
     align-items: center;
     margin-bottom: -16px
 }
@@ -142,7 +145,7 @@ ul li img {
     right: -70px;
     transition: 0.5s;
     margin-top: 20px;
-    opacity: 0;
+    opacity: 1;
     z-index: 10000;
     visibility: hidden;
 }
@@ -272,20 +275,95 @@ ul li img {
     margin-right: 2rem;
 }
 
-.hamburger {
+/* ###########hamburgur menu##################### */
+.navbar1 {
+    color: #fff;
+    position: relative;
+    padding: 0px;
+}
+
+.navbar-toggle {
+    background-color: transparent;
+    color: #000;
+    border: none;
+    font-size: 40px;
+    cursor: pointer;
+}
+
+.parent-list-items {
+    padding-left: 3rem;
+}
+
+.navbar-menu {
+    display: none;
+    list-style-type: none;
+    padding: 0;
+    overflow-y: auto;
+}
+
+.navbar-menu li {
+    padding: 10px;
+}
+
+.navbar-menu li a {
+    color: #000;
+    font-size: 16px;
+    text-decoration: none;
+    padding-left: 4.5rem;
+}
+
+.navbar-menu.show {
+    width: 63rem;
+    display: block;
+    display: block;
+    position: absolute;
+    top: 0rem;
+    margin: 0;
+    height: 100vh;
+    left: -128rem;
+    padding: 0;
+    z-index: 1;
+    background-color: rgba(255, 255, 255, 0);
+    background-color: white;
+    backdrop-filter: blur(500px);
+}
+
+.navbar-menu.disappear {
     display: none;
 }
 
-.hamburger-menu {
-    color: black;
+#iconToggle {
     cursor: pointer;
-    font-size: 35px;
+}
+
+.dropdownToggle {
+    align-items: baseline;
+    color: #000;
+    font-weight: bolder;
+    cursor: pointer;
+    padding-top: 1rem;
+}
+
+.flex {
+    display: flex;
+    justify-content: space-between;
 }
 
 .items .logo {
     max-width: 200px;
     margin-bottom: 1rem;
     padding: 10px;
+}
+
+.nav-logo {
+    max-width: 200px;
+    margin-bottom: 1rem;
+    padding-left: 8rem;
+    padding-top: 0.6rem;
+}
+
+.menu-items {
+    background: #f5f5f5;
 }
 
 .menu-items img {
@@ -334,38 +412,67 @@ ul li img {
 }
 
 .items .menu-items a:hover {
-    color: #BD3C97 !important;
+    color: #BD3C97;
 }
 
-.items-child li {
-    font-size: 12px !important;
-    background: #472F91 !important;
-    color: white !important;
+.itemsChild {
+    display: none;
+}
+
+.show {
+    display: block;
+}
+
+.itemsChild li {
+    font-size: 12px;
+    background: #472F91;
+    color: white;
     padding: 5px 5px 5px 20px;
     display: flex;
     justify-content: center;
     align-items: baseline;
     gap: 6px;
+    cursor: pointer;
 }
 
-.items-child .child {
+.itemsChild .child {
     width: 100%;
     color: white;
-    background: #472F91 !important;
-    padding: 0 !important;
-    margin: 0 !important;
+    background: #472F91;
+    margin: 0;
+    padding-left: 3rem !important;
+    padding-bottom: 12px !important;
+    padding-top: 1rem !important;
     box-sizing: border-box;
-    font-size: 12px !important;
+    font-size: 12px;
     font-weight: 400;
-    /* border-bottom: 1px solid lightgrey; */
+    border-bottom: 1px solid lightgrey;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     box-shadow: none;
 }
 
-.items-child .child:hover {
-    color: #fff !important;
+.itemsChild .child:hover {
+    color: #fff;
+}
+
+.itemsChild {
+    margin-top: 1rem;
+}
+
+.logo {
+    max-width: 200px;
+    margin-bottom: 1rem;
+    padding: 10px;
+}
+
+.navbar-menu-top {
+    display: flex;
+    justify-content: space-between;
+    color: black;
+    padding-right: 1rem;
+    padding-top: 0.5rem;
 }
 
 /* #########slider css############# */
@@ -417,10 +524,11 @@ ul li img {
 
 
 /* ############PROFILE CONTAINER############## */
-.profile-div{
+.profile-div {
     display: flex;
     justify-content: center;
 }
+
 .profile-img {
     position: relative;
 }
@@ -539,36 +647,43 @@ ul li img {
     max-width: 185px !important;
 }
 
+
 /* #################INFORMATIVE VIDEOS SECTION############## */
 
-.patient-heading{
+.patient-heading {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
-.patient-heading img{
-    width:185px;
-    margin:auto; 
+
+.patient-heading img {
+    width: 185px;
+    margin: auto;
     margin-left: 17rem;
 }
-.img-header{
+
+.img-header {
     display: flex;
     justify-content: space-between;
 }
+
 .con-in {
     display: flex;
     flex-direction: column;
     max-width: 24rem;
     letter-spacing: 2px;
 }
+
 .con-in h3 {
     font-size: 24px;
     font-weight: 900;
 }
+
 .con-in p {
     font-weight: 800;
 }
+
 .extra-margin-top {
     margin-top: 2rem;
 }
@@ -753,7 +868,7 @@ ul li img {
 /* ############CONTENT PORTION STYLING############# */
 /* .doc-re .content */
 
- .extra-class{
+.extra-class {
     background: #472F91;
     color: white;
     height: 100%;
@@ -923,7 +1038,7 @@ ul li img {
     width: 100%;
     height: 20rem;
     background: #472F91;
-    margin-top:0rem;
+    margin-top: 0rem;
     border-radius: 1.9rem;
 }
 
@@ -966,14 +1081,16 @@ ul li img {
     font-weight: 900;
     gap: 0.6rem;
     line-height: 1.2;
-    margin-top:10rem;
+    margin-top: 10rem;
     text-align: center;
 }
-.em-p{
+
+.em-p {
     font-size: 4.5rem;
     font-weight: 500;
 }
-.em-span{
+
+.em-span {
     color: #eb6d2d;
 }
 
@@ -1051,7 +1168,7 @@ ul li img {
     margin: 0 !important;
 }
 
-.blog-box img{
+.blog-box img {
     width: 100%;
 }
 
@@ -1114,5 +1231,3 @@ ul li img {
     margin-right: 1rem;
     margin-left: 0;
 }
-
-
